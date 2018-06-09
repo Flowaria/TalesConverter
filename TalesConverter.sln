@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalesConverter", "TalesConverter\TalesConverter.csproj", "{29F44A5B-0310-4C19-AED7-DB1E042F3549}"
+	ProjectSection(ProjectDependencies) = postProject
+		{390B7099-B86F-4047-B741-CE0B2ED3FCB2} = {390B7099-B86F-4047-B741-CE0B2ED3FCB2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP3Validate", "MP3Validate\MP3Validate.csproj", "{390B7099-B86F-4047-B741-CE0B2ED3FCB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceMerger", "FaceMerger\FaceMerger.csproj", "{16432432-59F1-42B4-B527-2621306DC258}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29F44A5B-0310-4C19-AED7-DB1E042F3549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29F44A5B-0310-4C19-AED7-DB1E042F3549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29F44A5B-0310-4C19-AED7-DB1E042F3549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29F44A5B-0310-4C19-AED7-DB1E042F3549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{390B7099-B86F-4047-B741-CE0B2ED3FCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{390B7099-B86F-4047-B741-CE0B2ED3FCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{390B7099-B86F-4047-B741-CE0B2ED3FCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{390B7099-B86F-4047-B741-CE0B2ED3FCB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16432432-59F1-42B4-B527-2621306DC258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16432432-59F1-42B4-B527-2621306DC258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16432432-59F1-42B4-B527-2621306DC258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16432432-59F1-42B4-B527-2621306DC258}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {624874CB-E191-4092-AF2B-9972A37FC685}
+	EndGlobalSection
+EndGlobal

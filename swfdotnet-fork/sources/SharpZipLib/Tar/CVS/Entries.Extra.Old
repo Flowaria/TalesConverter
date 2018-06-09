@@ -1,0 +1,8 @@
+D/Tests///////
+/InvalidHeaderException.cs////*///
+/TarArchive.cs////*///
+/TarBuffer.cs////*///
+/TarEntry.cs////*///
+/TarHeader.cs////*///
+/TarInputStream.cs////*///
+/TarOutputStream.cs////*///

@@ -1,0 +1,12 @@
+/BigEndianBitConverter.cs////*///
+/BinaryStringRW.cs////*///
+/BitParser.cs////*///
+/BufferedBinaryReader.cs////*///
+/BufferedBinaryWriter.cs////*///
+/Copie de BufferedBinaryReader.cs////*///
+/Copie de BufferedBinaryWriter.cs////*///
+/EndianBitConverter.cs////*///
+/Endianness.cs////*///
+/ImageFactory.cs////*///
+/LittleEndianBitConverter.cs////*///
+/SimpleHash.cs////*///

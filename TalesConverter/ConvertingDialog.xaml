@@ -1,0 +1,28 @@
+﻿<Window x:Class="TalesConverter.ConvertingDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TalesConverter"
+        mc:Ignorable="d"
+        Title="ConvertingDialog" Height="364" Width="300"
+		WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" ContentRendered="Window_ContentRendered">
+	<Window.Background>
+		<SolidColorBrush Opacity="0.0" Color="White"/>
+	</Window.Background>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*" />
+			<RowDefinition Height="32" />
+		</Grid.RowDefinitions>
+		<Grid>
+			<Grid.Background>
+				<ImageBrush ImageSource="Resources/wait.png" Stretch="Fill"/>
+			</Grid.Background>
+		</Grid>
+		<Grid Grid.Row="1">
+			<ProgressBar x:Name="eProgress" IsIndeterminate="False" Foreground="#FF8ACF62" BorderBrush="#FF5B5B5B" Background="White" />
+			<Label x:Name="eLabel" HorizontalAlignment="Center" Content=". . ." Height="32" FontSize="16"/>
+		</Grid>
+	</Grid>
+</Window>
