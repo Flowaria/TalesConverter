@@ -48,23 +48,12 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FastBitmapLib, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastBitmapLib.1.1.2\lib\net452\FastBitmapLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>Resources\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpZipLib">
-      <HintPath>Resources\SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -156,19 +145,19 @@
       <Project>{390b7099-b86f-4047-b741-ce0b2ed3fcb2}</Project>
       <Name>MP3Validate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SwfDotNet.IO\SwfDotNet.IO.csproj">
+      <Project>{4b0b3b70-bcff-4ad3-a922-0490910e3885}</Project>
+      <Name>SwfDotNet.IO</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\dll\FastBitmapLib.dll" />
-    <EmbeddedResource Include="Resources\dll\log4net.dll" />
     <EmbeddedResource Include="Resources\dll\Microsoft.WindowsAPICodePack.dll" />
     <EmbeddedResource Include="Resources\dll\Microsoft.WindowsAPICodePack.Shell.dll" />
-    <EmbeddedResource Include="Resources\dll\MP3Validate.dll" />
-    <EmbeddedResource Include="Resources\dll\SharpZipLib.dll" />
-    <EmbeddedResource Include="Resources\dll\SwfDotNet.IO.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>start "Merging" /I /d $(TargetDir) "E:\Program Files (x86)\Microsoft\ILMerge\ILMerge" /lib:"$(DevEnvDir)PublicAssemblies" /wildcards /out:"$(TargetName)_merge$(TargetExt)" "$(TargetFileName)" "*.dll"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

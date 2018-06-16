@@ -1,6 +1,4 @@
-﻿using SwfDotNet.IO;
-using SwfDotNet.IO.Tags;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
