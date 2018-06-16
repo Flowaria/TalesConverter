@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TalesConverter"
         mc:Ignorable="d"
         Title="ConvertingDialog" Height="364" Width="300"
-		WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" ContentRendered="Window_ContentRendered">
+		ContentRendered="Window_ContentRendered" Closing="Window_Closing">
 	<Window.Background>
 		<SolidColorBrush Opacity="0.0" Color="White"/>
 	</Window.Background>
@@ -22,7 +22,7 @@
 		</Grid>
 		<Grid Grid.Row="1">
 			<ProgressBar x:Name="eProgress" IsIndeterminate="False" Foreground="#FF8ACF62" BorderBrush="#FF5B5B5B" Background="White" />
-			<Label x:Name="eLabel" HorizontalAlignment="Center" Content=". . ." Height="32" FontSize="16"/>
+			<Label x:Name="eLabel" HorizontalAlignment="Center" Content="{Binding LabelText, Mode=TwoWay}" Height="32" FontSize="16"/>
 		</Grid>
 	</Grid>
 </Window>

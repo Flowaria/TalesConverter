@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
+using TalesConverter.Thread;
 
 namespace TalesConverter
 {
@@ -20,18 +24,31 @@ namespace TalesConverter
         public int MaxThread { get; set; } = 10;
         public int MaxImage { get; set; } = 8;
 
+        public double Progress { get; set; } = 0.0;
+        public string LabelText { get; set; } = "Wait a sec!";
+
         public ConvertingDialog()
         {
             InitializeComponent();
 
-            ShowInTaskbar = false;
-            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
-            double windowWidth = this.Width;
-            double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
-            Topmost = true;
+            eProgress.DataContext = this;
+            eLabel.DataContext = this;
+
+            Left = (SystemParameters.PrimaryScreenWidth / 2) - (Width / 2);
+            Top = (SystemParameters.PrimaryScreenHeight / 2) - (Height / 2);
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            var result = MessageBox.Show("정말로 종료할까요?", "작업 취소중...", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if(result == MessageBoxResult.OK)
+            {
+
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private async void Window_ContentRendered(object sender, EventArgs e)
@@ -39,6 +56,7 @@ namespace TalesConverter
             eLabel.Content = "Reading File";
             int Count = FileToConvert.Length;
 
+            var tsmFiles = new List<string>();
             var tsiFiles = new List<string>();
 
             Directory.CreateDirectory(SaveDir);
@@ -57,70 +75,51 @@ namespace TalesConverter
                 }
                 else if(extension.ToLower().Equals(".tsm"))
                 {
-                    eProgress.IsIndeterminate = false;
-                    eProgress.Value = (double)i / Count * 100;
-                    eLabel.Content = filename;
-                    await Task.Factory.StartNew(delegate
-                    {
-                        byte[] result = new byte[File.ReadAllBytes(FileToConvert[i]).Length];
-                        var decoder = TsmDecoder.DecodeFile(FileToConvert[i], out result, AnalyzeMP3File);
-                        if(decoder != null)
-                        {
-                            Console.WriteLine("dec"+result.Length);
-                            if (decoder.IsEncrypted)
-                            {
-                                string cfile = Path.Combine(SaveDir, filename + (decoder.IsZipFile ? ".zip" : ".mp3"));
-                                File.WriteAllBytes(cfile, result);
-                            }
-                            else //rename
-                            {
-                                string cfile = Path.Combine(SaveDir, filename + (decoder.IsZipFile ? ".zip" : ".mp3"));
-                                File.WriteAllBytes(cfile, result);
-                            }
-                        }
-                    });
+                    tsmFiles.Add(FileToConvert[i]);
                 }
+            }
+            if(tsmFiles.Count > 0)
+            {
+                eLabel.Content = "TSM 파일 목록 확인 중...";
+                eProgress.IsIndeterminate = true;
+                var worker = new TsmBundleWorker();
+                worker.SaveDirectory = SaveDir;
+                worker.MaxThread = MaxThread;
+                worker.OnSingleEnd += c_ProgressChanged;
+                worker.OnTotalCalculated += c_TotalCalc;
+                await worker.Handle(tsmFiles);
             }
             if (tsiFiles.Count > 0)
             {
+                eLabel.Content = "TSI 파일에서 이미지 추출 중...";
                 eProgress.IsIndeterminate = true;
-                eLabel.Content = "TSI 파일에서 이미지 추출중...";
-
-                await Task.Factory.StartNew(delegate
-                {
-                    Parallel.ForEach(tsiFiles, new ParallelOptions { MaxDegreeOfParallelism = MaxThread }, file =>
-                    {
-                        using (TsiThread c = new TsiThread(MaxImage))
-                        {
-                            string save_path = Path.Combine(SaveDir, Path.GetFileNameWithoutExtension(file));
-                            Directory.CreateDirectory(save_path);
-
-                            c.ExtractFilesFromSWF(file);
-
-                            foreach (var img in c.ImgPNG)
-                            {
-                                if(File.Exists(img.SaveUrl))
-                                {
-                                    File.Move(img.SaveUrl, Path.Combine(save_path, img.Name + ".png"));
-                                }
-                            }
-
-                            foreach (var img in c.ImgJPG)
-                            {
-                                if (File.Exists(img.SaveUrl))
-                                {
-                                    File.Move(img.SaveUrl, Path.Combine(save_path, img.Name + ".jpg"));
-                                }
-                            }
-                        }
-                    });
-                });
-                Close();
+                var worker = new TsiBundleWorker();
+                worker.SaveDirectory = SaveDir;
+                worker.MaxThread = MaxThread;
+                worker.MaxExtractThread = MaxImage;
+                worker.OnSingleEnd += c_ProgressChanged;
+                worker.OnTotalCalculated += c_TotalCalc;
+                await worker.Handle(tsiFiles);
             }
-            else
+            Close();
+        }
+
+        private void c_TotalCalc(object sender, ProgressEventArgs e)
+        {
+            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
             {
-                Close();
-            }
+                eProgress.IsIndeterminate = false;
+            }));
+        }
+
+        private void c_ProgressChanged(object sender, ProgressEventArgs e)
+        {
+            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+            {
+                eProgress.Maximum = e.Max;
+                eProgress.Value = e.Current;
+                eLabel.Content = e.Max + " / " + e.Current;
+            }));
         }
     }
 }

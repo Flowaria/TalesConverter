@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FaceMerger
+namespace TalesConverter.Thread
 {
-    public class Class1
+    class TsmThread
     {
     }
 }

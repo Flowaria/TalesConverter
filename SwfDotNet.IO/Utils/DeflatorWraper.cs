@@ -16,11 +16,12 @@ namespace SwfDotNet.IO.Utils
             {
                 using (var ms = new MemoryStream(Bytes))
                 {
-                    using (DeflateStream defstream = new DeflateStream(ms, CompressionMode.Decompress))
+                    using (var defstream = new DeflateStream(ms, CompressionMode.Decompress))
                     {
+                        ms.ReadByte();
+                        ms.ReadByte();
                         defstream.CopyTo(result);
                     }
-
                 }
                 return result.ToArray();
             }
@@ -31,7 +32,7 @@ namespace SwfDotNet.IO.Utils
             {
                 using (var ms = new MemoryStream(Bytes))
                 {
-                    using (DeflateStream defstream = new DeflateStream(ms, CompressionMode.Compress))
+                    using (var defstream = new DeflateStream(ms, CompressionMode.Compress))
                     {
                         defstream.CopyTo(result);
                     }

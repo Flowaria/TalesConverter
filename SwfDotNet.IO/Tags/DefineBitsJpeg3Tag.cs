@@ -288,7 +288,7 @@ namespace SwfDotNet.IO.Tags
                     using (var fbmp = png.FastLock())
                     {
                         // Do your changes here...
-                        byte[] dealphaData = DecompressZLib(alphaData);
+                        byte[] dealphaData = DeflatorWraper.Decompress(alphaData);
                         int height = bmp.Height;
                         int width = bmp.Width;
                         for (int j = 0; j < height; j++)
@@ -312,22 +312,6 @@ namespace SwfDotNet.IO.Tags
                     bmp.Save(stream, ImageFormat.Bmp);
                 }
                 bmp.Dispose();
-            }
-        }
-
-        private byte[] DecompressZLib(byte[] Bytes)
-        {
-            using (var result = new MemoryStream())
-            {
-                using (var ms = new MemoryStream(Bytes))
-                {
-                    using (DeflateStream defstream = new DeflateStream(ms, CompressionMode.Decompress))
-                    {
-                        defstream.CopyTo(result);
-                    }
-                    
-                }
-                return result.ToArray();
             }
         }
         #endregion

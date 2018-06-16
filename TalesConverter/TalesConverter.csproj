@@ -76,8 +76,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TsiThread.cs" />
+    <Compile Include="Thread\BundleWorker.cs" />
+    <Compile Include="Thread\TsiBundleWorker.cs" />
+    <Compile Include="Thread\TsiThread.cs" />
+    <Compile Include="Thread\TsmBundleWorker.cs" />
     <Compile Include="TsmDecoder.cs" />
+    <Compile Include="Thread\TsmThread.cs" />
     <Page Include="ConvertingDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
