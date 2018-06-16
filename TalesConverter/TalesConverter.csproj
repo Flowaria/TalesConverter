@@ -154,6 +154,9 @@
     <EmbeddedResource Include="Resources\dll\Microsoft.WindowsAPICodePack.dll" />
     <EmbeddedResource Include="Resources\dll\Microsoft.WindowsAPICodePack.Shell.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\header.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
