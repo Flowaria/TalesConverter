@@ -76,12 +76,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Thread\BundleWorker.cs" />
-    <Compile Include="Thread\TsiBundleWorker.cs" />
-    <Compile Include="Thread\TsiThread.cs" />
-    <Compile Include="Thread\TsmBundleWorker.cs" />
-    <Compile Include="TsmDecoder.cs" />
-    <Compile Include="Thread\TsmThread.cs" />
     <Page Include="ConvertingDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,7 +91,6 @@
     <Compile Include="ConvertingDialog.xaml.cs">
       <DependentUpon>ConvertingDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TsmDecoderData.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -145,21 +138,17 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MP3Validate\MP3Validate.csproj">
-      <Project>{390b7099-b86f-4047-b741-ce0b2ed3fcb2}</Project>
-      <Name>MP3Validate</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SwfDotNet.IO\SwfDotNet.IO.csproj">
-      <Project>{4b0b3b70-bcff-4ad3-a922-0490910e3885}</Project>
-      <Name>SwfDotNet.IO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\dll\Microsoft.WindowsAPICodePack.dll" />
     <EmbeddedResource Include="Resources\dll\Microsoft.WindowsAPICodePack.Shell.dll" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\header.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TalesSharpLib\TalesSharpLib.csproj">
+      <Project>{3aea912a-1fdd-498a-ae7c-5dd38304974e}</Project>
+      <Name>TalesSharpLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

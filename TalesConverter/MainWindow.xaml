@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TalesConverter"
         mc:Ignorable="d"
-        Title="Tales# Converter v1" Height="400" Width="300" ResizeMode="NoResize"
+        Title="Tales# Converter v1" Height="420" Width="300" ResizeMode="NoResize"
 		>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
+			<RowDefinition Height="20" />
 			<RowDefinition Height="20" />
 			<RowDefinition Height="20" />
 			<RowDefinition Height="20" />
@@ -25,18 +26,25 @@
 		
 		<CheckBox x:Name="cb1" IsEnabled="False" Grid.Row="1" Content="모르는 tsm 음악 파일 자동 분석 (느림)" Margin="8,0,0,0"/>
 		<CheckBox x:Name="cb2" IsEnabled="False" Grid.Row="2" Content="분리된 이미지 자동으로 합치기 (불안정)" Margin="8,0,0,0"/>
-		<Grid Grid.Row="3" Margin="8,0">
+		<Grid Grid.Row="3">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="2.5*" />
-				<ColumnDefinition Width="1*" />
-				<ColumnDefinition Width="0.5*" />
-				<ColumnDefinition Width="2.5*" />
+				<ColumnDefinition Width="0.8*" />
+				<ColumnDefinition Width="0.2*" />
 				<ColumnDefinition Width="1*" />
 			</Grid.ColumnDefinitions>
-			<TextBlock Text="tsi 분석 속도"/>
-			<Slider x:Name="slide1" Grid.Column="1" Minimum="1" SmallChange="1" LargeChange="2" Value="{Binding MaxThread}" Maximum="16"/>
-			<TextBlock Grid.Column="3" Text="그림 추출 속도"/>
-			<Slider x:Name="slide2" Grid.Column="4" Minimum="1" SmallChange="1" LargeChange="2" Value="{Binding MaxImage}" Maximum="16"/>
+			<TextBlock Text="최대 작업 수: "/>
+			<TextBox x:Name="slide1_label" Grid.Column="1" Text="4" IsReadOnly="True"/>
+			<Slider x:Name="slide1" Grid.Column="2" Minimum="1" SmallChange="1" LargeChange="2" Value="{Binding MaxThread}" Maximum="8" ToolTip="Tsi분석 작업 / Tsm 추출 작업시 몇개의 작업을 동시에 할지 지정합니다. (최대 값: 8)" ValueChanged="slide1_ValueChanged"/>
+		</Grid>
+		<Grid Grid.Row="4">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.8*" />
+				<ColumnDefinition Width="0.2*" />
+				<ColumnDefinition Width="1.0*" />
+			</Grid.ColumnDefinitions>
+			<TextBlock Text="최대 작업 (그림) 수: "/>
+			<TextBox x:Name="slide2_label" Grid.Column="1" Text="8" IsReadOnly="True"/>
+			<Slider x:Name="slide2" Grid.Column="2" Minimum="1" SmallChange="1" LargeChange="2" Value="{Binding MaxImage}" Maximum="16" ToolTip="Tsi에서 그림을 추출할때 최대 몇개의 작업을 동시에 할지 지정합니다. (최대 값: 16)" ValueChanged="slide2_ValueChanged"/>
 		</Grid>
 	</Grid>
 </Window>

@@ -33,6 +33,16 @@ namespace TalesConverter
             Top = (SystemParameters.PrimaryScreenHeight / 2) - (Height / 2);
         }
 
+        private void slide2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            slide2_label.Text = MaxImage.ToString();
+        }
+
+        private void slide1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            slide1_label.Text = MaxThread.ToString();
+        }
+
         private void ImagePanel_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))

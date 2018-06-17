@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using TalesConverter.Thread;
+using TalesSharp.Thread;
 
 namespace TalesConverter
 {
@@ -91,7 +91,7 @@ namespace TalesConverter
             }
             if (tsiFiles.Count > 0)
             {
-                eLabel.Content = "TSI 파일에서 이미지 추출 중...";
+                eLabel.Content = "TSI 파일(들)에서 이미지 목록 확인 중...";
                 eProgress.IsIndeterminate = true;
                 var worker = new TsiBundleWorker();
                 worker.SaveDirectory = SaveDir;

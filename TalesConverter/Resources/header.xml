@@ -1,32 +1,32 @@
 <Headers>
 	<!--115-->
-	<Header target="140 251 160 96" start="0" pattern="250" password="115" salt="3" zip="false" encrypted="true"/>
-	<Header target="140 251 160 64" start="0" pattern="250" password="115" salt="3" zip="false" encrypted="true"/>
-	<Header target="58 44 33 03" start="0" pattern="250" password="115" salt="3" zip="false" encrypted="true"/>
-	<Header target="35 75 3 4" start="0" pattern="250" password="115" salt="3" zip="true" encrypted="true"/>
+	<Header target="140 251 160 96" start="0" pattern="250" password="115" salt="3" zip="false" encoded="true"/>
+	<Header target="140 251 160 64" start="0" pattern="250" password="115" salt="3" zip="false" encoded="true"/>
+	<Header target="58 44 33 03" start="0" pattern="250" password="115" salt="3" zip="false" encoded="true"/>
+	<Header target="35 75 3 4" start="0" pattern="250" password="115" salt="3" zip="true" encoded="true"/>
 	
-	<Header target="255 251 160 96" start="0" pattern="250" password="115" salt="3" zip="false" encrypted="false"/>
-	<Header target="255 251 160 64" start="0" pattern="250" password="115" salt="3" zip="false" encrypted="false"/>
-	<Header target="73 44 33 03" start="0" pattern="250" password="115" salt="3" zip="false" encrypted="false"/>
+	<Header target="255 251 160 96" start="0" pattern="250" password="115" salt="3" zip="false" encoded="false"/>
+	<Header target="255 251 160 64" start="0" pattern="250" password="115" salt="3" zip="false" encoded="false"/>
+	<Header target="73 44 33 03" start="0" pattern="250" password="115" salt="3" zip="false" encoded="false"/>
 	
 	<!--최신작-->
-	<Header target="251 251 144 64" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="true"/>
-	<Header target="251 251 144 96" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="true"/>
-	<Header target="251 251 176 64" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="true"/>
-	<Header target="251 251 176 96" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="true"/>
+	<Header target="251 251 144 64" start="250" pattern="250" password="117" salt="3" zip="false" encoded="true"/>
+	<Header target="251 251 144 96" start="250" pattern="250" password="117" salt="3" zip="false" encoded="true"/>
+	<Header target="251 251 176 64" start="250" pattern="250" password="117" salt="3" zip="false" encoded="true"/>
+	<Header target="251 251 176 96" start="250" pattern="250" password="117" salt="3" zip="false" encoded="true"/>
 	
-	<Header target="73 68 51 4" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="true"/>
-	<Header target="75 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encrypted="true"/>
-	<Header target="75 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encrypted="true"/>
+	<Header target="73 68 51 4" start="250" pattern="250" password="117" salt="3" zip="false" encoded="true"/>
+	<Header target="75 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encoded="true"/>
+	<Header target="75 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encoded="true"/>
 	
 	<!--최신작 rename-->
-	<Header target="255 251 144 64" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="false"/>
-	<Header target="255 251 144 96" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="false"/>
-	<Header target="255 251 176 64" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="false"/>
-	<Header target="255 251 176 96" start="250" pattern="250" password="117" salt="3" zip="false" encrypted="false"/>
+	<Header target="255 251 144 64" start="250" pattern="250" password="117" salt="3" zip="false" encoded="false"/>
+	<Header target="255 251 144 96" start="250" pattern="250" password="117" salt="3" zip="false" encoded="false"/>
+	<Header target="255 251 176 64" start="250" pattern="250" password="117" salt="3" zip="false" encoded="false"/>
+	<Header target="255 251 176 96" start="250" pattern="250" password="117" salt="3" zip="false" encoded="false"/>
 	
-	<Header target="80 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encrypted="false"/>
-	<Header target="80 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encrypted="false"/>
+	<Header target="80 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encoded="false"/>
+	<Header target="80 75 3 4" start="250" pattern="250" password="117" salt="3" zip="true" encoded="false"/>
 	
 	<!--스왑할 것-->
 	<Swap target="251 251" to="255 251"/>
