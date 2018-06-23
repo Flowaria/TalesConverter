@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using TalesSharp.Thread;
+using TalesConverter.Thread;
 
 namespace TalesConverter
 {
@@ -100,6 +100,7 @@ namespace TalesConverter
                 worker.OnSingleEnd += c_ProgressChanged;
                 worker.OnTotalCalculated += c_TotalCalc;
                 await worker.Handle(tsiFiles);
+                
             }
             Close();
         }

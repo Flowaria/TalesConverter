@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TalesSharp.Thread
+namespace TalesConverter.Thread
 {
     public class TsiBundleWorker : BundleWorker
     {
@@ -47,6 +48,19 @@ namespace TalesSharp.Thread
                         SingleDone();
                     }
                 });
+
+                if (Preferences.TSI_Zip_Image)
+                {
+                    Parallel.ForEach(tsiFiles, new ParallelOptions { MaxDegreeOfParallelism = MaxThread }, file =>
+                    {
+                        string directory = Path.Combine(SaveDirectory, Path.GetFileNameWithoutExtension(file));
+                        if(Directory.Exists(directory))
+                        {
+                            ZipFile.CreateFromDirectory(directory, directory+".images.zip");
+                            Directory.Delete(directory, true);
+                        }
+                    });
+                }
             });
         }
     }

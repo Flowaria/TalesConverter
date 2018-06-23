@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -19,7 +20,6 @@ namespace TalesConverter
         {
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(ResolveAssembly);
         }
-
 
         static Assembly ResolveAssembly(object sender, ResolveEventArgs args)
         {
@@ -42,6 +42,16 @@ namespace TalesConverter
                 }
             }
             return null;
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            Preferences.LoadFromRegistry();
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            Preferences.SaveToRegistry();
         }
     }
 }

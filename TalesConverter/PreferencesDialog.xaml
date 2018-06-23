@@ -1,0 +1,30 @@
+﻿<Window x:Class="TalesConverter.PreferencesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:local="clr-namespace:TalesConverter"
+        Title="환경 설정" Height="400" Width="400" ResizeMode="NoResize">
+    <Window.Resources>
+        <local:Preferences x:Key="Pref"/>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="TSM 파일 추출 설정">
+                <StackPanel>
+                    <CheckBox IsChecked="{Binding Source={StaticResource Pref}, Path=TSM_Zip_Music}" Content="음악을 압축 파일로 추출"/>
+                    <CheckBox IsChecked="{Binding Source={StaticResource Pref}, Path=TSM_Voice_Extract_Zip}" Content="보이스 파일 압축 해제"/>
+                    <CheckBox IsEnabled="false" IsChecked="{Binding Source={StaticResource Pref}, Path=TSM_Fastmode}" Content="빠른 모드 (분석기능 없음)"/>
+                    <CheckBox IsChecked="{Binding Source={StaticResource Pref}, Path=TSM_Analyze}" Content="파일 유형 분석 (조금 느림)"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="TSI 파일 추출 설정">
+                <StackPanel>
+                    <CheckBox IsChecked="{Binding Source={StaticResource Pref}, Path=TSI_Zip_Image}" Content="이미지를 압축 파일로 추출"/>
+                    <CheckBox IsEnabled="False" IsChecked="{Binding Source={StaticResource Pref}, Path=TSI_Merge_Image}" Content="분리된 이미지 자동으로 합치기 (불안정)"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

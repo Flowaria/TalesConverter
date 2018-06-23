@@ -85,8 +85,6 @@ namespace TalesConverter
                 ConvertingDialog cDialog = new ConvertingDialog();
                 cDialog.FileToConvert = files;
                 cDialog.SaveDir = dir;
-                cDialog.AnalyzeMP3File = cb1.IsChecked.Value;
-                cDialog.MergeFaceImage = cb2.IsChecked.Value;
                 cDialog.MaxThread = MaxThread;
                 cDialog.MaxImage = MaxImage;
                 cDialog.ShowDialog();
@@ -99,6 +97,12 @@ namespace TalesConverter
             {
                 MessageBox.Show("잘못된 경로를 선택하셨습니다.", "알림",MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void btn1_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            PreferencesDialog dialog = new PreferencesDialog();
+            dialog.ShowDialog();
         }
     }
 }

@@ -5,28 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TalesConverter"
         mc:Ignorable="d"
-        Title="Tales# Converter v1" Height="420" Width="300" ResizeMode="NoResize"
+        Title="Tales# Converter Beta 2" Height="380" Width="300" ResizeMode="NoResize"
 		>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*" />
-			<RowDefinition Height="20" />
-			<RowDefinition Height="20" />
-			<RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
 			<RowDefinition Height="20" />
 		</Grid.RowDefinitions>
-		<StackPanel Grid.Row="0" Name="ImagePanel" Drop="ImagePanel_Drop" AllowDrop="true">
-			<Button x:Name="btn1" Click="btn1_Click" Height="300" Panel.ZIndex="1">
-				<Button.Background>
-					<ImageBrush ImageSource="Resources/drag_drop.png" Stretch="Uniform"/>
-				</Button.Background>
-			</Button>
-		</StackPanel >
-		
-		
-		<CheckBox x:Name="cb1" IsEnabled="False" Grid.Row="1" Content="모르는 tsm 음악 파일 자동 분석 (느림)" Margin="8,0,0,0"/>
-		<CheckBox x:Name="cb2" IsEnabled="False" Grid.Row="2" Content="분리된 이미지 자동으로 합치기 (불안정)" Margin="8,0,0,0"/>
-		<Grid Grid.Row="3">
+        <TextBlock Grid.Row="0" Text="오른쪽 클릭: 설정"/>
+        <StackPanel Grid.Row="0" Name="ImagePanel" Drop="ImagePanel_Drop" AllowDrop="true">
+
+            <Button x:Name="btn1" Click="btn1_Click" Height="300" Panel.ZIndex="1" MouseRightButtonUp="btn1_MouseRightButtonUp">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/drag_drop.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+        <Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="0.8*" />
 				<ColumnDefinition Width="0.2*" />
@@ -36,7 +32,7 @@
 			<TextBox x:Name="slide1_label" Grid.Column="1" Text="4" IsReadOnly="True"/>
 			<Slider x:Name="slide1" Grid.Column="2" Minimum="1" SmallChange="1" LargeChange="2" Value="{Binding MaxThread}" Maximum="8" ToolTip="Tsi분석 작업 / Tsm 추출 작업시 몇개의 작업을 동시에 할지 지정합니다. (최대 값: 8)" ValueChanged="slide1_ValueChanged"/>
 		</Grid>
-		<Grid Grid.Row="4">
+		<Grid Grid.Row="2">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="0.8*" />
 				<ColumnDefinition Width="0.2*" />
