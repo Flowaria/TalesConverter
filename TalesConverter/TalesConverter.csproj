@@ -161,7 +161,9 @@
     <EmbeddedResource Include="Resources\dll\Microsoft.WindowsAPICodePack.Shell.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\header.xml" />
+    <Resource Include="Resources\header.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TalesSharpLib\TalesSharpLib.csproj">
